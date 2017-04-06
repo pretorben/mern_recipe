@@ -7,13 +7,13 @@ class RecipeList extends Component {
    let recipeNodes = this.props.data.map(recipe => {
      return (
        <Recipe
-       dish={ recipe.dish }
-       uniqueID={ recipe['_id'] }
-       onRecipeDelete={ this.props.onRecipeDelete }
-       onRecipeUpdate={ this.props.onRecipeUpdate }
-       key={ recipe['_id'] }>
-       { recipe.ingredients }
-       { recipe.directions }
+         dish={ recipe.dish }
+         uniqueID={ recipe['_id'] }
+         onRecipeDelete={ this.props.onRecipeDelete }
+         onRecipeUpdate={ this.props.onRecipeUpdate }
+         key={ recipe['_id'] }>
+         {recipe.ingredients}
+         {recipe.directions}
        </Recipe>
      )
    })

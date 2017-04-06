@@ -47,7 +47,6 @@ class RecipeBox extends Component {
  }
  componentDidMount() {
    this.loadRecipesFromServer();
-   setInterval(this.loadRecipesFromServer, this.props.pollInterval);
  }
  render() {
    return (

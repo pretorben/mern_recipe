@@ -8,7 +8,7 @@ var Recipe = require("./model/recipes");
 var app = express();
 var router = express.Router();
 
-var port = process.env.API_PORT || 3001;
+var port = process.env.PORT || 8080;
 mongoose.connect('mongodb://pretorben:roadkill@ds149030.mlab.com:49030/mern-recipe');
 
 app.use(bodyParser.urlencoded({ extended: true }));

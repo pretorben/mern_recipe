@@ -4,7 +4,7 @@ import RecipeBox from './RecipeBox';
 
 ReactDOM.render(
   <RecipeBox
-    url="http://localhost:3001/api/recipes"
+    url="https://mlab.com/databases/mern-recipe/collections/recipes"
   />,
   document.getElementById('root')
 );

@@ -47,12 +47,11 @@ class RecipeBox extends Component {
  }
  componentDidMount() {
    this.loadRecipesFromServer();
-   setInterval(this.loadRecipesFromServer, this.props.pollInterval);
  }
  render() {
    return (
      <div className="recipeBox">
-       <h2 className="title">Recipes:</h2>
+       <h2 className="title">Cookbook</h2>
        <RecipeList
        onRecipeDelete={ this.handleRecipeDelete }
        onRecipeUpdate={ this.handleRecipeUpdate }

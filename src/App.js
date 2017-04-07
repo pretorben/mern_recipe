@@ -8,13 +8,15 @@ class App extends Component {
      toBeUpdated: false,
      dish: "",
      ingredients: [],
-     directions: []
+     directions: [],
+     photoUrl: ""
    };
    this.deleteRecipe = this.deleteRecipe.bind(this);
    this.updateRecipe = this.updateRecipe.bind(this);
    this.handleDishChange = this.handleDishChange.bind(this);
    this.handleIngredientsChange = this.handleIngredientsChange.bind(this);
    this.handleDirectionsChange = this.handleDirectionsChange.bind(this);
+   this.handlePhotoUrlChange = this.handlePhotoUrlChange.bind(this);
    this.handleRecipeUpdate = this.handleRecipeUpdate.bind(this);
  }
  updateRecipe(e) {
@@ -26,18 +28,18 @@ class App extends Component {
    let id = this.props.uniqueID;
    let dish = this.state.dish.slice();
    let ingredients = this.state.ingredients.slice();
-   console.log(ingredients);
    let directions = this.state.directions.slice();
-   console.log(directions);
+   let photoUrl = this.state.photoUrl.slice();
    let ingredientsArr = ingredients.split(',');
    let directionsArr = directions.split(',');
-   let recipe = { dish: dish, ingredients: ingredientsArr, directions: directionsArr };
+   let recipe = { dish: dish, ingredients: ingredientsArr, directions: directionsArr, photoUrl: photoUrl };
    this.props.onRecipeUpdate(id, recipe);
    this.setState({
      toBeUpdated: !this.state.toBeUpdated,
      dish: "",
      ingredients: [],
-     directions: []
+     directions: [],
+     photoUrl: []
    });
  }
  deleteRecipe(e) {
@@ -53,6 +55,9 @@ class App extends Component {
  }
  handleDishChange(e) {
    this.setState({ dish: e.target.value });
+ }
+ handlePhotoUrlChange(e) {
+   this.setState({ photoUrl: e.target.value });
  }
  render() {
    return (
@@ -81,6 +86,12 @@ class App extends Component {
              className="recipeFormDirections"
              value={ this.state.directions }
              onChange={ this.handleDirectionsChange } />
+             <input
+               type="text"
+               placeholder="Update photo"
+               className="recipeFormDirections"
+               value={ this.state.photoUrl }
+               onChange={ this.handlePhotoUrlChange } />
            <input
              type="submit"
              className="recipeFormPost"

@@ -28,7 +28,8 @@ class RecipeForm extends Component {
    let dish = this.state.dish.trim();
    let ingredients = this.state.ingredients.slice();
    let directions = this.state.directions.slice();
-   if (!ingredients || !dish || !directions) {
+   let photoUrl = this.state.photoUrl.slice();
+   if (!ingredients || !dish || !directions || !photoUrl) {
       return;
    }
    let ingredientsArr = ingredients.split(',');
@@ -36,12 +37,14 @@ class RecipeForm extends Component {
    this.props.onRecipeSubmit({
      dish: dish,
      ingredients: ingredientsArr,
-     directions: directionsArr
+     directions: directionsArr,
+     photoUrl: photoUrl
    });
    this.setState({
      dish: "",
      ingredients: [],
-     directions: []
+     directions: [],
+     photoUrl: ""
    });
  }
  render() {
@@ -65,6 +68,12 @@ class RecipeForm extends Component {
        className="recipeFormDirections"
        value={ this.state.directions }
        onChange={ this.handleDirectionsChange } />
+       <input
+         type="text"
+         placeholder="Photo URL"
+         className="recipeFormDirections"
+         value={ this.state.photoUrl }
+         onChange={ this.handlePhotoUrlChange } />
        <input
          type="submit"
          className="recipeFormPost"

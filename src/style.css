@@ -87,7 +87,7 @@ body{
   float: left;
   text-align: justify;
   flex-direction: column;
-  margin-left: 200px;
+  margin-left: 300px;
 }
 
 .showDirections{
@@ -99,4 +99,5 @@ body{
 
 .buttons{
   margin-top: 20px;
+  flex: 3;
 }

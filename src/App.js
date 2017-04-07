@@ -1,12 +1,4 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from "react-router-dom";
-import RecipeList from './RecipeList.js';
-import About from './About.js';
-import Recipe from './Recipe.js';
 import "./style.css";
 
 class App extends Component {
@@ -32,10 +24,14 @@ class App extends Component {
  handleRecipeUpdate(e) {
    e.preventDefault();
    let id = this.props.uniqueID;
-   let dish = (this.state.dish) ? this.state.dish : null;
-   let ingredients = (this.state.ingredients) ? this.state.ingredients : null;
-   let directions = (this.state.directions) ? this.state.directions : null;
-   let recipe = { dish: dish, ingredients: ingredients, directions: directions };
+   let dish = this.state.dish.slice();
+   let ingredients = this.state.ingredients.slice();
+   console.log(ingredients);
+   let directions = this.state.directions.slice();
+   console.log(directions);
+   let ingredientsArr = ingredients.split(',');
+   let directionsArr = directions.split(',');
+   let recipe = { dish: dish, ingredients: ingredientsArr, directions: directionsArr };
    this.props.onRecipeUpdate(id, recipe);
    this.setState({
      toBeUpdated: !this.state.toBeUpdated,
@@ -60,19 +56,40 @@ class App extends Component {
  }
  render() {
    return (
-     <Router>
-       <div className="recipe">
-         <nav>
-           <Link to="/">Home</Link>
-           <Link to="/about">About</Link>
-         </nav>
-         <Route exact path="/" component={RecipeList} />
-         <Route path="/about" component={About} />
-         <Route path="/recipes/:_id" component={Recipe} />
+     <div className="recipe">
+       <div className="buttons">
+         <button onClick={ this.updateRecipe }>Update</button>
+         <button onClick={ this.deleteRecipe }>Delete</button>
        </div>
-     </Router>
+       { (this.state.toBeUpdated)
+       ? (<form onSubmit={ this.handleRecipeUpdate }>
+           <input
+             type="text"
+             placeholder="Update dish name"
+             className="recipeFormDish"
+             value={ this.state.dish }
+             onChange={ this.handleDishChange } />
+           <input
+             type="text"
+             placeholder="Update ingredients"
+             className="recipeFormIngredients"
+             value={ this.state.ingredients }
+             onChange={ this.handleIngredientsChange } />
+           <input
+             type="text"
+             placeholder="Update directions"
+             className="recipeFormDirections"
+             value={ this.state.directions }
+             onChange={ this.handleDirectionsChange } />
+           <input
+             type="submit"
+             className="recipeFormPost"
+             value="Update" />
+       </form>)
+       : null}
+     </div>
    )
  }
 }
 
-export default Recipe;
+export default App;

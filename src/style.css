@@ -1,7 +1,11 @@
+body{
+  background-color: #CCC;
+  font-family: 'Revalia', cursive;
+}
 .recipeBox{
    width: 80vw;
    margin: 0 auto;
-   font-family: 'Revalia', cursive;
+   text-align: center;
  }
 
  title{
@@ -16,7 +20,6 @@
  }
 
  .recipe{
-   background-color: #fafafa;
    margin: 10px;
    padding: 3px 10px;
    font-size: .85rem;
@@ -70,15 +73,30 @@
    border: none;
  }
 
- .updateLink{
-   text-decoration: none;
-   padding-right: 15px;
-   font-size: .7rem;
- }
+.title{
+  text-align: center;
+}
 
- .deleteLink{
-   text-decoration: none;
-   padding-right: 15px;
-   font-size: .7rem;
-   color: red;
- }
+.displayRecipe>div{
+  display: flex;
+  align-content: center;
+}
+
+.showIngredients{
+  flex: 1;
+  float: left;
+  text-align: justify;
+  flex-direction: column;
+  margin-left: 200px;
+}
+
+.showDirections{
+  flex: 2;
+  text-align: justify;
+  flex-direction: column;
+  padding-left: 100px;
+}
+
+.buttons{
+  margin-top: 20px;
+}

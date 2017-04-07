@@ -31,10 +31,12 @@ class RecipeForm extends Component {
    if (!ingredients || !dish || !directions) {
       return;
    }
+   let ingredientsArr = ingredients.split(',');
+   let directionsArr = directions.split(',');
    this.props.onRecipeSubmit({
      dish: dish,
-     ingredients: ingredients,
-     directions: directions
+     ingredients: ingredientsArr,
+     directions: directionsArr
    });
    this.setState({
      dish: "",
